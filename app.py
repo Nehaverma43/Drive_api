@@ -76,7 +76,6 @@ def extract_text(file_id, mime_type):
 @app.route('/fetch-drive-documents', methods=['GET'])
 def fetch_drive_documents():
     files = list_all_files(FOLDER_ID)
-    #files = files[:5]  # limit for testing
     supported_types = {
         'application/pdf',
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
@@ -103,5 +102,5 @@ def fetch_drive_documents():
     return jsonify({"documents": documents})
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Render sets PORT as an env variable
+    port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
