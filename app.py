@@ -8,16 +8,12 @@ import docx
 import openpyxl
 from pptx import Presentation
 import os
-import json
 
 app = Flask(__name__)
 
-SERVICE_ACCOUNT_FILE = json.loads(os.environ["GOOGLE_CREDS"])
-creds = service_account.Credentials.from_service_account_info(SERVICE_ACCOUNT_FILE)
-
-#SERVICE_ACCOUNT_FILE = 'service_account.json'
+SERVICE_ACCOUNT_FILE = 'service_account.json'
 SCOPES = ['https://www.googleapis.com/auth/drive']
-#creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
 drive_service = build('drive', 'v3', credentials=creds)
 
 FOLDER_ID = "1jHDjMkJeRbuMZiJW8zM-pVjhx0jDUfPY"
